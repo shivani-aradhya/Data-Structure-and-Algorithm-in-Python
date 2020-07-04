@@ -17,9 +17,10 @@ def maxarray(arr):
                 startindex=s
                 endindex=i
 
-    print("Maximum contigous sum: ", totalmax)
+    print("Maximum sum contiguous subarray: ", totalmax)
     print ("Starting index and Ending index: " , startindex, 'and' , endindex)
 
 
 a=[-1,-2.-3,6,4,2,-1]
+print(a)
 a= maxarray(a)
