@@ -13,7 +13,7 @@ class Node:
 
 def build_suffix_tree(content, position):
 	n = len(content)
-	j = 0  # j = new string starting point
+	j = 0  
 	tree = list()
 	while j < n:
 		add_new = True
@@ -29,18 +29,18 @@ def build_suffix_tree(content, position):
 			tree.append(new)
 		else:
 			found = True
-			while found:  # f = check whether child is new
+			while found: 
 				found = False
-				i, f, e = matching(i, content, child)  # f = child front
-				if f >= e:  # string match child, child = new child; else child = old child
+				i, f, e = matching(i, content, child)
+				if f >= e:  
 					if j >= position:
 						child.first = False
 					for node in child.children:
 						if match_or_not(i, content, node):
 							child = node
-							found = True  # confirm new child
+							found = True 
 							break
-			if f < child.end:  # only when mother node has space
+			if f < child.end:  
 				child.end = f
 				relic = Node(f, e, child.first)
 				relic.children = child.children
@@ -49,7 +49,7 @@ def build_suffix_tree(content, position):
 				child.first = False
 			new_child = Node(i, n, j < position)
 			child.children.append(new_child)
-		j = j + 1  # new string set and while for next string
+		j = j + 1 
 		i = j
 	return tree
 
@@ -61,7 +61,7 @@ def match_or_not(i, content, target):
 def matching(i, content, target):
 	f = target.front
 	e = target.end
-	while f < e and content[i] == content[f]:  # need to mark off target end from not match
+	while f < e and content[i] == content[f]:  
 		i, f = i + 1, f + 1
 	return i, f, e
 
